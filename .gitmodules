@@ -1,0 +1,3 @@
+[submodule "depends/cat"]
+	path = depends/cat
+	url = git@github.com:dianping/cat.git
