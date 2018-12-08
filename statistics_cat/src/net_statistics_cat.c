@@ -8,7 +8,11 @@ static void net_statistics_cat_log_event(net_statistics_backend_t backend, const
 static void net_statistics_cat_log_metric_for_count(net_statistics_backend_t backend, const char *name, int quantity);
 static void net_statistics_cat_log_metric_for_duration(net_statistics_backend_t backend, const char *name, uint64_t duration_ms);
 
-net_statistics_cat_t net_statistics_cat_create(mem_allocrator_t alloc, error_monitor_t em, net_statistics_t statistics) {
+net_statistics_cat_t
+net_statistics_cat_create(
+    mem_allocrator_t alloc, error_monitor_t em, net_statistics_t statistics, uint8_t debug,
+    const char * app_key)
+{
     net_statistics_backend_t backend =
         net_statistics_backend_create(
             statistics,
@@ -28,12 +32,12 @@ net_statistics_cat_t net_statistics_cat_create(mem_allocrator_t alloc, error_mon
     
     statistics_cat->m_alloc = alloc;
     statistics_cat->m_em = em;
-    statistics_cat->m_debug = 0;
+    statistics_cat->m_debug = debug;
 
     CatClientConfig config = DEFAULT_CCAT_CONFIG;
     config.enableHeartbeat = 0;
-    config.enableDebugLog = 1;
-    catClientInitWithConfig("ccat", &config);
+    config.enableDebugLog = debug ? 1 : 0;
+    catClientInitWithConfig(app_key, &config);
     
     return statistics_cat;
 }
