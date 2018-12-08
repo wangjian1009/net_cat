@@ -5,7 +5,7 @@
 
 CPE_BEGIN_DECL
 
-net_statistics_cat_t net_statistics_cat_create(mem_allocrator_t alloc, error_monitor_t em);
+net_statistics_cat_t net_statistics_cat_create(mem_allocrator_t alloc, error_monitor_t em, net_statistics_t statistics);
 void net_statistics_cat_free(net_statistics_cat_t statistics_cat);
 
 uint8_t net_statistics_cat_debug(net_statistics_cat_t statistics_cat);

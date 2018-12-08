@@ -1,5 +1,6 @@
 #ifndef NET_STATISTICS_CAT_I_H_INCLEDED
 #define NET_STATISTICS_CAT_I_H_INCLEDED
+#include "client.h"
 #include "cpe/pal/pal_queue.h"
 #include "cpe/utils/memory.h"
 #include "cpe/utils/error.h"
