@@ -7,7 +7,7 @@ CPE_BEGIN_DECL
 
 net_statistics_cat_t net_statistics_cat_create(
     mem_allocrator_t alloc, error_monitor_t em, net_statistics_t statistics, uint8_t debug,
-    const char * app_key);
+    const char * app_key, uint8_t enable_heartbeat);
 void net_statistics_cat_free(net_statistics_cat_t statistics_cat);
 
 CPE_END_DECL

@@ -11,7 +11,7 @@ static void net_statistics_cat_log_metric_for_duration(net_statistics_backend_t 
 net_statistics_cat_t
 net_statistics_cat_create(
     mem_allocrator_t alloc, error_monitor_t em, net_statistics_t statistics, uint8_t debug,
-    const char * app_key)
+    const char * app_key, uint8_t enable_heartbeat)
 {
     net_statistics_backend_t backend =
         net_statistics_backend_create(
@@ -35,7 +35,7 @@ net_statistics_cat_create(
     statistics_cat->m_debug = debug;
 
     CatClientConfig config = DEFAULT_CCAT_CONFIG;
-    config.enableHeartbeat = 0;
+    config.enableHeartbeat = enable_heartbeat ? 1 : 0;
     config.enableDebugLog = debug ? 1 : 0;
     catClientInitWithConfig(app_key, &config);
     
