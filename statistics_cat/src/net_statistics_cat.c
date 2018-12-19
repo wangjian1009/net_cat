@@ -1,5 +1,6 @@
 #include "net_statistics_backend.h"
 #include "net_statistics_cat_i.h"
+#include "net_statistics_cat_transaction_i.h"
 
 static int net_statistics_cat_backend_init(net_statistics_backend_t backend);
 static void net_statistics_cat_backend_fini(net_statistics_backend_t backend);
@@ -25,8 +26,10 @@ net_statistics_cat_create(
             net_statistics_cat_log_error,
             net_statistics_cat_log_metric_for_count,
             net_statistics_cat_log_metric_for_duration,
-            0,
-            NULL, NULL, NULL);
+            sizeof(struct net_statistics_cat_transaction),
+            net_statistics_cat_transaction_init,
+            net_statistics_cat_transaction_fini,
+            net_statistics_cat_transaction_set_state);
     if (backend == NULL) {
         CPE_ERROR(em, "net_statistics_cat: create backend fail!");
         return NULL;
