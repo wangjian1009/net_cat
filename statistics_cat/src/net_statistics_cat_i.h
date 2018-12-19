@@ -10,6 +10,8 @@
 
 CPE_BEGIN_DECL
 
+typedef struct net_statistics_cat * net_statistics_cat_t;
+
 struct net_statistics_cat {
     mem_allocrator_t m_alloc;
     error_monitor_t m_em;

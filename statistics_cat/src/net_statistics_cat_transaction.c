@@ -1,3 +1,4 @@
+#include "net_statistics_backend.h"
 #include "net_statistics_cat_transaction_i.h"
 
 int net_statistics_cat_transaction_init(
