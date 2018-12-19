@@ -9,7 +9,7 @@ struct net_statistics_cat_transaction {
 };
 
 int net_statistics_cat_transaction_init(
-    net_statistics_backend_t backend, net_statistics_transaction_t transaction, void * data, const char * type);
+    net_statistics_backend_t backend, net_statistics_transaction_t transaction, void * data, const char * type, const char * name);
 void net_statistics_cat_transaction_fini(
     net_statistics_backend_t backend, net_statistics_transaction_t transaction, void * data);
 void net_statistics_cat_transaction_set_state(

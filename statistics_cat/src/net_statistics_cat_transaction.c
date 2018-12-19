@@ -1,11 +1,11 @@
 #include "net_statistics_cat_transaction_i.h"
 
 int net_statistics_cat_transaction_init(
-    net_statistics_backend_t backend, net_statistics_transaction_t transaction, void * data, const char * type)
+    net_statistics_backend_t backend, net_statistics_transaction_t transaction, void * data, const char * type, const char * name)
 {
     struct net_statistics_cat_transaction * t = data;
 
-    t->m_transaction = newTransaction("E", type);
+    t->m_transaction = newTransaction(type, name);
     if (t->m_transaction == NULL) return -1;
     
     return 0;
